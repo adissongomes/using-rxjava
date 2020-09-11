@@ -22,7 +22,6 @@ public abstract class BaseSubscriber<T> implements Subscriber<T> {
     @Override
     public void onSubscribe(Subscription s) {
         this.subscription = s;
-        this.subscription.request(Long.MAX_VALUE);
     }
 
     @Override
@@ -33,6 +32,14 @@ public abstract class BaseSubscriber<T> implements Subscriber<T> {
     @Override
     public void onComplete() {
         LOGGER.info("COMPLETED");
+    }
+
+    protected void requestInfinite() {
+        request(Long.MAX_VALUE);
+    }
+
+    protected void request(long count) {
+        this.subscription.request(count);
     }
 
     public void detach() {

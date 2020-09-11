@@ -27,6 +27,6 @@ public class Data {
 
     @Override
     public String toString() {
-        return String.format("id %05d - data '%s'", id, data);
+        return String.format("id %07d - data '%s'", id, data);
     }
 }
